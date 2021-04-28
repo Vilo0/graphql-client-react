@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { gql } from "apollo-boost";
 import { useQuery, useLazyQuery } from "@apollo/react-hooks";
-import { AuthContext } from '../context/authContext';
-import { useHistory } from 'react-router-dom';
+import { AuthContext } from "../context/authContext";
+import { useHistory } from "react-router-dom";
 
 const GET_ALL_POST = gql`
   {
@@ -24,8 +24,8 @@ const Home = () => {
 
   const updateUserName = () => {
     dispatch({
-      type: 'LOGGED_IN_USER',
-      payload: 'Miguel Chamorro'
+      type: "LOGGED_IN_USER",
+      payload: "Miguel Chamorro",
     });
   };
 
@@ -34,18 +34,19 @@ const Home = () => {
   return (
     <div className="container">
       <div className="row p-5">
-        {data.allPosts.map((p) => (
-          <div className="col-md-4" key={p.id}>
-            <div className="card">
-              <div className="card-body">
-                <div className="card-title">
-                  <h4>{p.title}</h4>
+        {data &&
+          data.allPosts.map((p) => (
+            <div className="col-md-4" key={p.id}>
+              <div className="card">
+                <div className="card-body">
+                  <div className="card-title">
+                    <h4>{p.title}</h4>
+                  </div>
+                  <p className="card-text">{p.description}</p>
                 </div>
-                <p className="card-text">{p.description}</p>
               </div>
             </div>
-          </div>
-        ))}
+          ))}
       </div>
       <div className="row p-5">
         <button
@@ -61,7 +62,7 @@ const Home = () => {
       {JSON.stringify(state.user)}
       <hr />
       <button className="btn btn-primary" onClick={updateUserName}>
-          Change user name
+        Change user name
       </button>
       <hr />
       {JSON.stringify(history)}
