@@ -18,16 +18,16 @@ const Home = () => {
   const { data, loading } = useQuery(GET_ALL_POST);
   const [fetchPosts, { data: posts }] = useLazyQuery(GET_ALL_POST);
   // access context
-  const { state, dispatch } = useContext(AuthContext);
+  const { state } = useContext(AuthContext);
   // react router
   let history = useHistory();
 
-  const updateUserName = () => {
+  /*const updateUserName = () => {
     dispatch({
       type: "LOGGED_IN_USER",
       payload: "Miguel Chamorro",
     });
-  };
+  };*/
 
   if (loading) return <p className="p-5">Loading...</p>;
 
@@ -60,10 +60,6 @@ const Home = () => {
       {JSON.stringify(posts)}
       <hr />
       {JSON.stringify(state.user)}
-      <hr />
-      <button className="btn btn-primary" onClick={updateUserName}>
-        Change user name
-      </button>
       <hr />
       {JSON.stringify(history)}
     </div>
