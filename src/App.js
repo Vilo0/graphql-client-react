@@ -2,8 +2,8 @@ import React, { useContext } from "react";
 import ApolloClient from "apollo-boost";
 import { Switch, Route } from "react-router-dom";
 import { ApolloProvider } from "@apollo/react-hooks";
+import { AuthContext } from "./context/authContext";
 import { ToastContainer } from "react-toastify";
-// import components
 import Nav from "./components/Nav";
 import Home from "./pages/Home";
 import Register from "./pages/auth/Register";
@@ -12,7 +12,6 @@ import PasswordForgot from "./pages/auth/PasswordForgot";
 import Profile from "./pages/auth/Profile";
 import Login from "./pages/auth/Login";
 import CompleteRegistration from "./pages/auth/CompleteRegistration";
-import { AuthContext } from "./context/authContext";
 import PrivateRoute from "./components/PrivateRoute";
 import Post from "./pages/post/Post";
 
