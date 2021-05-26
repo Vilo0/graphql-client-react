@@ -13,6 +13,7 @@ import Profile from "./pages/auth/Profile";
 import Login from "./pages/auth/Login";
 import CompleteRegistration from "./pages/auth/CompleteRegistration";
 import PrivateRoute from "./components/PrivateRoute";
+import PublicRoute from "./components/PublicRoute";
 import Post from "./pages/post/Post";
 
 const App = () => {
@@ -36,8 +37,8 @@ const App = () => {
       <ToastContainer />
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route exact path="/register" component={Register} />
-        <Route exact path="/login" component={Login} />
+        <PublicRoute exact path="/register" component={Register} />
+        <PublicRoute exact path="/login" component={Login} />
         <Route
           exact
           path="/complete-registration"
