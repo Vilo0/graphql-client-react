@@ -43,6 +43,7 @@ const Profile = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log(values);
     setLoading(true);
     userUpdate({ variables: { input: values } });
     setLoading(false);
@@ -62,6 +63,7 @@ const Profile = () => {
             <h4>Profile</h4>
           )}
         </div>
+
         <FileUpload
           setValues={setValues}
           setLoading={setLoading}
