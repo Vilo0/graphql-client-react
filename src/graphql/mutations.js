@@ -20,10 +20,10 @@ export const USER_CREATE = gql`
 `;
 
 export const POST_CREATE = gql`
-    mutation postCreate($input: PostCreateInput!) {
-        postCreate(input: $input) {
-            ...postData
-        }
+  mutation postCreate($input: PostCreateInput!) {
+    postCreate(input: $input) {
+      ...postData
     }
-    ${POST_DATA}
+  }
+  ${POST_DATA}
 `;

@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const UserCard = ({ user }) => {
   const { username, images, about } = user;
   return (
-    <div className="card text-center" style={{ minHeight: "375px" }}>
+    <div className="card text-center" style={{ minHeight: "375px " }}>
       <div className="card-body">
         <Image image={images[0]} />
         <Link to={`/user/${username}`}>
