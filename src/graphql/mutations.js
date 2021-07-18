@@ -27,3 +27,20 @@ export const POST_CREATE = gql`
   }
   ${POST_DATA}
 `;
+
+export const POST_UPDATE = gql`
+  mutation postUpdate($id: ID!, $input: PostCreateInput!) {
+    postUpdate(id: $id, input: $input) {
+      ...postData
+    }
+  }
+  ${POST_DATA}
+`;
+
+export const POST_DELETE = gql`
+  mutation postDelete($id: ID!) {
+    postDelete(id: $id) {
+      ...postData
+    }
+  }
+`;

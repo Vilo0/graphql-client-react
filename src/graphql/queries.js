@@ -36,8 +36,8 @@ export const ALL_USERS = gql`
 `;
 
 export const GET_ALL_POST = gql`
-  {
-    allPosts {
+  query allPosts($limit: Int, $page: Int){
+    allPosts(limit: $limit, page: $page) {
       ...postData
     }
   }
@@ -45,8 +45,8 @@ export const GET_ALL_POST = gql`
 `;
 
 export const POSTS_BY_USER = gql`
-  query {
-    postsByUser {
+  query postsByUser($limit: Int, $page: Int){
+    postsByUser (limit: $limit, page: $page){
       ...postData
     }
   }

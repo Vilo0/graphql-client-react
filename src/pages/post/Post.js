@@ -17,9 +17,11 @@ const initialState = {
 const Post = () => {
   const [values, setValues] = useState(initialState);
   const [loading, setLoading] = useState(false);
+  const [limit, setLimit] = useState(4);
+  const [page, setPage] = useState(1);
 
   //query
-  const { data: posts } = useQuery(POSTS_BY_USER);
+  const { data: posts } = useQuery(POSTS_BY_USER, { variables: { limit, page } });
 
   // destrecture
   const { content } = values;
