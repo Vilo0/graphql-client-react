@@ -20,21 +20,19 @@ const PostUpdateModal = ({ show, onClose, postModal, postUpdate }) => {
 
     const handleChange = (e) => {
         e.preventDefault();
-        console.log("e.target.value", e.target.value);
         setValues({ ...values, [e.target.name]: e.target.value });
     }
 
     const { content } = values;
 
-    const handleSubmit = (e) => {
-        console.log("actualizando post");
-        e.preventDefault();
+    const handleSubmit = () => {
         setLoading(true);
         const id =  values.id;
         delete values.id;
         postUpdate({ variables: { id: id, input: values } });
         setLoading(false);
         onClose();
+        toast.success("Post updated");
     }
 
     useEffect(() => {
@@ -48,12 +46,11 @@ const PostUpdateModal = ({ show, onClose, postModal, postUpdate }) => {
                 },
             }
             setValues(dataModal);
-            console.log("dataModal", dataModal);
         }
     }, [postModal])
 
     const updateForm = () => (
-        <form onSubmit={handleSubmit}>
+        <>
           <div className="form-group">
             <textarea
               value={content}
@@ -66,15 +63,7 @@ const PostUpdateModal = ({ show, onClose, postModal, postUpdate }) => {
               disabled={loading}
             ></textarea>
           </div>
-    
-          <button
-            className="btn btn-primary"
-            type="submit"
-            disabled={loading || !content}
-          >
-            Post
-          </button>
-        </form>
+        </>
       );
 
     return (
@@ -97,7 +86,7 @@ const PostUpdateModal = ({ show, onClose, postModal, postUpdate }) => {
                     <Button variant="secondary" onClick={onClose}>
                         Close
                     </Button>
-                    <Button variant="primary" onClick={() => handleSubmit}>
+                    <Button variant="primary" onClick={handleSubmit} disabled={loading || !content}>
                         Confirm
                     </Button>
                 </Modal.Footer>

@@ -1,4 +1,5 @@
 import React, { useReducer, useEffect, createContext } from "react";
+import { useHistory } from "react-router-dom";
 import { auth } from "../firebase";
 
 // reducer function
@@ -22,12 +23,18 @@ const AuthContext = createContext();
 // context provider
 const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(firebaseReducer, initialState);
+  let history = useHistory();
+
+  useEffect(() => {
+    history.listen((location) => {
+      console.log(`You changed the page to: ${location.pathname}`)
+    })
+  }, [history])
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const idTokenResult = await user.getIdTokenResult();
-
         dispatch({
           type: "LOGGED_IN_USER",
           payload: { email: user.email, token: idTokenResult.token },

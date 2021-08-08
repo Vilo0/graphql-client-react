@@ -18,7 +18,8 @@ const PostUpdateModal = ({ show, onClose, postModal, postDelete, setPostId }) =>
                     <Modal.Title>Delete Post</Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <p>¿Estás seguro de eliminar el post: <b>{ postModal?._id }</b>?</p>
+                    <p>Are you sure to delete the post:</p>
+                    <p><b>{ postModal?.content }</b>?</p>
                 </Modal.Body>
                 <Modal.Footer>
                     <Button variant="secondary" onClick={onClose}>

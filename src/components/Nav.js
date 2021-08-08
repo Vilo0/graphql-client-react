@@ -1,5 +1,5 @@
 import React, { useState, useContext, Fragment } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, NavLink, useHistory } from "react-router-dom";
 import { auth } from "firebase";
 import { AuthContext } from "../context/authContext";
 
@@ -9,6 +9,7 @@ const Nav = () => {
   let history = useHistory();
 
   const { user } = state;
+  console.log("user", user);
 
   const logout = () => {
     auth().signOut();
@@ -46,23 +47,29 @@ const Nav = () => {
 
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
-          <li className="nav-item active">
-            <Link className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/users`}>
+          <li className="nav-item">
+            <NavLink className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/users`} activeClassName="active">
               Users
-            </Link>
+            </NavLink>
+          </li>
+
+          <li className="nav-item">
+            <NavLink className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/posts`} activeClassName="active">
+              Posts
+            </NavLink>
           </li>
 
           {user && (
-            <li className="nav-item active">
-              <Link className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/profile`}>
+            <li className="nav-item">
+              <NavLink className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/profile`} activeClassName="active">
                 {user && user.email.split("@")[0]}
-              </Link>
+              </NavLink>
             </li>
           )}
 
           {!user && (
             <Fragment>
-              <li className="nav-item active">
+              <li className="nav-item">
                 <Link className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/login`}>
                   Login
                 </Link>

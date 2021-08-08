@@ -99,10 +99,10 @@ const FileUpload = ({
   };
 
   return (
-    <div className="row">
+    <div className="col-md-12 row">
       <div className="col-md-3">
         <div className="form-group">
-          <label className="btn btn-primary">
+          <label className="btn btn-primary left">
             Upload Image
             <input
               hidden

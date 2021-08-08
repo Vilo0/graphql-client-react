@@ -117,6 +117,7 @@ const Posts = () => {
     }
 
     const handleSearch = (e) => {
+        setPage(1);
         setSearch(e.target.value);
     }
 
@@ -128,7 +129,7 @@ const Posts = () => {
 
     return (
         <div className="container p-5">
-            { loading ? <h4>Cargando....</h4> : <h1 className="text-center">Todos los Posts</h1> }
+            { loading ? <h4>Loading....</h4> : <h1 className="text-center">All Posts</h1> }
             <div className="row">
                 <div className="col-12">
                     <form className="form-inline mt-5 float-right" onSubmit={handleSubmit}>
