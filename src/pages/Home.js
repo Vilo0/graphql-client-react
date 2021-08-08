@@ -26,7 +26,7 @@ const Home = () => {
     <div className="container">
       <div className="row p-5">
         {data &&
-          data.allPosts.map((post) => (
+          data.allPosts.posts.map((post) => (
             <div className="col-md-4 pt-5" key={post._id}>
               <PostCard post={post} />
             </div>

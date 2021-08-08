@@ -36,17 +36,36 @@ export const ALL_USERS = gql`
 `;
 
 export const GET_ALL_POST = gql`
-  query allPosts($limit: Int, $page: Int){
-    allPosts(limit: $limit, page: $page) {
-      ...postData
+  query allPosts($limit: Int, $page: Int, $search: String){
+    allPosts(limit: $limit, page: $page, search: $search) {
+      posts {
+        ...postData
+      },
+      page,
+      pages,
+      total
     }
   }
   ${POST_DATA}
 `;
 
 export const POSTS_BY_USER = gql`
-  query postsByUser($limit: Int, $page: Int){
-    postsByUser (limit: $limit, page: $page){
+  query postsByUser($limit: Int, $page: Int, $search: String) {
+    postsByUser (limit: $limit, page: $page, search: $search) {
+      posts {
+        ...postData
+      }
+      page,
+      pages,
+      total
+    }
+  }
+  ${POST_DATA}
+`;
+
+export const POST_SHOW = gql`
+  query postShow($id: ID!) {
+    postShow (id: $id) {
       ...postData
     }
   }

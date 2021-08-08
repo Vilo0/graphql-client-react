@@ -7,8 +7,8 @@ import AuthForm from "../../components/forms/AuthForm";
 
 const Login = () => {
   const { dispatch } = useContext(AuthContext);
-  const [email, setEmail] = useState("mchamorro@laescala.cl");
-  const [password, setPassword] = useState("chillan2021");
+  const [email, setEmail] = useState("thevilos@gmail.com");
+  const [password, setPassword] = useState("escalab2021");
   const [loading, setLoading] = useState(false);
 
   let history = useHistory();

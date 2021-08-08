@@ -43,4 +43,5 @@ export const POST_DELETE = gql`
       ...postData
     }
   }
+  ${POST_DATA}
 `;

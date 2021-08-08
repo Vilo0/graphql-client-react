@@ -27,6 +27,7 @@ export const POST_DATA = gql`
     postedBy {
       _id
       username
+      email
     }
   }
 `;

@@ -1,10 +1,12 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import FileUpload from "../../components/FileUpload";
 import { POST_CREATE } from "../../graphql/mutations";
 import { POSTS_BY_USER } from "../../graphql/queries";
 import PostCard from "../../components/PostCard";
+import PostDeleteModal from "../../components/modals/PostDelete";
+import { AuthContext } from "../../context/authContext";
 
 const initialState = {
   content: "",
@@ -15,16 +17,25 @@ const initialState = {
 };
 
 const Post = () => {
+  const context = useContext(AuthContext);
+
+  const [show, setShow] = useState(false);
+  const [postModal, setPostModal] = useState('');
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
+
   const [values, setValues] = useState(initialState);
   const [loading, setLoading] = useState(false);
-  const [limit, setLimit] = useState(4);
+  const [limit, setLimit] = useState(20);
   const [page, setPage] = useState(1);
 
   //query
-  const { data: posts } = useQuery(POSTS_BY_USER, { variables: { limit, page } });
+  const { data: myData } = useQuery(POSTS_BY_USER, { variables: { limit, page } });
 
   // destrecture
   const { content } = values;
+
 
   // mutation
   const [postCreate] = useMutation(POST_CREATE, {
@@ -33,17 +44,24 @@ const Post = () => {
       // read Query from cache
       const { postsByUser } = cache.readQuery({
         query: POSTS_BY_USER,
+        variables: { limit, page }
       });
       // write Query to cache
       cache.writeQuery({
         query: POSTS_BY_USER,
+        variables: { limit, page },
         data: {
-          postsByUser: [postCreate, ...postsByUser],
+          postsByUser: {
+            __typename: "PostInfo",
+            posts: [postCreate, ...postsByUser.posts],
+          }
+          // postsByUser: [postCreate, ...postsByUser],
         },
       });
     },
     onError: (err) => console.log(err.graphqlQLError[0].message),
   });
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -101,13 +119,15 @@ const Post = () => {
       </div>
       <hr />
       <div className="row p-5">
-        {posts &&
-          posts.postsByUser.map((post) => (
+        { myData &&
+          myData.postsByUser.posts.map((post) => (
             <div className="col-md-6 pt-5" key={post._id}>
-              <PostCard post={post} />
+              <PostCard post={post} onShow={handleShow} postModal={setPostModal} />
             </div>
-          ))}
+          )) }
       </div>
+
+      <PostDeleteModal show={show} onClose={handleClose} postModal={postModal} limit={limit} page={page} />
     </div>
   );
 };
