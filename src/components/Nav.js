@@ -29,7 +29,7 @@ const Nav = () => {
 
   return (
     <nav className="navbar navbar-expand-lg navbar-light bg-light ">
-      <Link className="navbar-brand" to="/">
+      <Link className="navbar-brand" to={`${process.env.REACT_APP_BASE_URL}/`}>
         Navbar
       </Link>
       <button
@@ -47,14 +47,14 @@ const Nav = () => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-            <Link className="nav-link" to="/users">
+            <Link className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/users`}>
               Users
             </Link>
           </li>
 
           {user && (
             <li className="nav-item active">
-              <Link className="nav-link" to="/profile">
+              <Link className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/profile`}>
                 {user && user.email.split("@")[0]}
               </Link>
             </li>
@@ -63,12 +63,12 @@ const Nav = () => {
           {!user && (
             <Fragment>
               <li className="nav-item active">
-                <Link className="nav-link" to="/login">
+                <Link className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/login`}>
                   Login
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/register">
+                <Link className="nav-link" to={`${process.env.REACT_APP_BASE_URL}/register`}>
                   Register
                 </Link>
               </li>
@@ -76,7 +76,7 @@ const Nav = () => {
           )}
           {user && (
             <li className="nav-item">
-              <a onClick={logout} href="/login" className="nav-item nav-link">
+              <a onClick={logout} href={`${process.env.REACT_APP_BASE_URL}/login`} className="nav-item nav-link">
                 Logout
               </a>
             </li>

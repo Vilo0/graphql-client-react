@@ -23,7 +23,6 @@ import SinglePost from "./pages/post/SinglePost";
 const App = () => {
   const { state } = useContext(AuthContext);
   const { user } = state;
-  const baseURL = process.env.REACT_APP_BASE_URL;
 
   const client = new ApolloClient({
     uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
@@ -41,26 +40,26 @@ const App = () => {
       <Nav />
       <ToastContainer />
       <Switch>
-        <Route exact path={`${baseURL}/`} component={Home} />
-        <Route exact path={`${baseURL}/users`} component={Users} />
-        <Route exact path={`${baseURL}/posts`} component={Posts} />
-        <PublicRoute exact path={`${baseURL}/register`} component={Register} />
-        <PublicRoute exact path={`${baseURL}/login`} component={Login} />
+        <Route exact path={`${process.env.REACT_APP_BASE_URL}/`} component={Home} />
+        <Route exact path={`${process.env.REACT_APP_BASE_URL}/users`} component={Users} />
+        <Route exact path={`${process.env.REACT_APP_BASE_URL}/posts`} component={Posts} />
+        <PublicRoute exact path={`${process.env.REACT_APP_BASE_URL}/register`} component={Register} />
+        <PublicRoute exact path={`${process.env.REACT_APP_BASE_URL}/login`} component={Login} />
         <Route
           exact
-          path={`${baseURL}/complete-registration`}
+          path={`${process.env.REACT_APP_BASE_URL}/complete-registration`}
           component={CompleteRegistration}
         />
-        <Route exact path={`${baseURL}/password/forgot`} component={PasswordForgot} />
+        <Route exact path={`${process.env.REACT_APP_BASE_URL}/password/forgot`} component={PasswordForgot} />
         <PrivateRoute
           exact
-          path={`${baseURL}/password/update`}
+          path={`${process.env.REACT_APP_BASE_URL}/password/update`}
           component={PasswordUpdate}
         />
-        <PrivateRoute exact path={`${baseURL}/profile`} component={Profile} />
-        <PrivateRoute exact path={`${baseURL}/post/create`} component={Post} />
-        <PrivateRoute exact path={`${baseURL}/post/:idPost`} component={SinglePost} />
-        <Route exact path={`${baseURL}/user/:username`} component={SingleUser} />
+        <PrivateRoute exact path={`${process.env.REACT_APP_BASE_URL}/profile`} component={Profile} />
+        <PrivateRoute exact path={`${process.env.REACT_APP_BASE_URL}/post/create`} component={Post} />
+        <PrivateRoute exact path={`${process.env.REACT_APP_BASE_URL}/post/:idPost`} component={SinglePost} />
+        <Route exact path={`${process.env.REACT_APP_BASE_URL}/user/:username`} component={SingleUser} />
       </Switch>
     </ApolloProvider>
   );
