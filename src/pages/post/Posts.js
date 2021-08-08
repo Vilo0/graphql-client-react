@@ -112,6 +112,7 @@ const Posts = () => {
     const handleLimit = (e) => {
         e.preventDefault();
         console.log(e.target.value);
+        setPage(1);
         setLimit(parseInt(e.target.value));
     }
 
@@ -180,19 +181,17 @@ const Posts = () => {
                 }
             </div>
             <div className="row">
+                <div className="col-12 text-center pt-5">
+                    { data && (page <= data.allPosts.pages && page > 1) && (
+                            <button onClick={() => setPage(pageCount => pageCount - 1)} className="btn btn-primary float-left" type="button">Prev Page</button>       
+                        )
+                    }
                 
-                { // data && (page < data.allPosts.pages) && (
-                        <div className="col-12 p-3 mt-3">
-                            <button onClick={() => setPage(pageCount => pageCount + 1)} className="btn btn-primary float-right" type="button">Next Page</button>    
-                        </div>  
-                   // )  
-                }  
-                { // data && (page > data.allPosts.pages) && (
-                        <div className="col-12 float-left p-3 mt-3">
-                            <button onClick={() => setPage(pageCount => pageCount - 1)} className="btn btn-primary float-left" type="button">Prev Page</button>    
-                        </div>     
-                   // )
-                }
+                    { data && (page != data.allPosts.pages) && (
+                        <button onClick={() => setPage(pageCount => pageCount + 1)} className="btn btn-primary float-right" type="button">Next Page</button>     
+                    )  
+                    } 
+                </div>
             </div>
             { show && (
                 <PostModalShow show={show} onClose={handleClose} postModal={postModal} />

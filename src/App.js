@@ -23,6 +23,7 @@ import SinglePost from "./pages/post/SinglePost";
 const App = () => {
   const { state } = useContext(AuthContext);
   const { user } = state;
+  const baseURL = process.env.REACT_APP_BASE_URL;
 
   const client = new ApolloClient({
     uri: process.env.REACT_APP_GRAPHQL_ENDPOINT,
@@ -40,26 +41,26 @@ const App = () => {
       <Nav />
       <ToastContainer />
       <Switch>
-        <Route exact path="/" component={Home} />
-        <Route exact path="/users" component={Users} />
-        <Route exact path="/posts" component={Posts} />
-        <PublicRoute exact path="/register" component={Register} />
-        <PublicRoute exact path="/login" component={Login} />
+        <Route exact path={`${baseURL}/`} component={Home} />
+        <Route exact path={`${baseURL}/users`} component={Users} />
+        <Route exact path={`${baseURL}/posts`} component={Posts} />
+        <PublicRoute exact path={`${baseURL}/register`} component={Register} />
+        <PublicRoute exact path={`${baseURL}/login`} component={Login} />
         <Route
           exact
-          path="/complete-registration"
+          path={`${baseURL}/complete-registration`}
           component={CompleteRegistration}
         />
-        <Route exact path="/password/forgot" component={PasswordForgot} />
+        <Route exact path={`${baseURL}/password/forgot`} component={PasswordForgot} />
         <PrivateRoute
           exact
-          path="/password/update"
+          path={`${baseURL}/password/update`}
           component={PasswordUpdate}
         />
-        <PrivateRoute exact path="/profile" component={Profile} />
-        <PrivateRoute exact path="/post/create" component={Post} />
-        <PrivateRoute exact path="/post/:idPost" component={SinglePost} />
-        <Route exact path="/user/:username" component={SingleUser} />
+        <PrivateRoute exact path={`${baseURL}/profile`} component={Profile} />
+        <PrivateRoute exact path={`${baseURL}/post/create`} component={Post} />
+        <PrivateRoute exact path={`${baseURL}/post/:idPost`} component={SinglePost} />
+        <Route exact path={`${baseURL}/user/:username`} component={SingleUser} />
       </Switch>
     </ApolloProvider>
   );
