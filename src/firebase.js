@@ -1,5 +1,4 @@
 import * as firebase from "firebase";
-console.log("env", process.env);
 // firebase config
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_FIREBASE_APIKEY,
