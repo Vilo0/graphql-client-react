@@ -40,26 +40,26 @@ const App = () => {
       <Nav />
       <ToastContainer />
       <Switch>
-        <Route exact path={`${process.env.REACT_APP_BASE_URL}/`} component={Home} />
-        <Route exact path={`${process.env.REACT_APP_BASE_URL}/users`} component={Users} />
-        <Route exact path={`${process.env.REACT_APP_BASE_URL}/posts`} component={Posts} />
-        <PublicRoute exact path={`${process.env.REACT_APP_BASE_URL}/register`} component={Register} />
-        <PublicRoute exact path={`${process.env.REACT_APP_BASE_URL}/login`} component={Login} />
+        <Route exact path="/" component={Home} />
+        <Route exact path="/users" component={Users} />
+        <Route exact path="/posts" component={Posts} />
+        <PublicRoute exact path="/register" component={Register} />
+        <PublicRoute exact path="/login" component={Login} />
         <Route
           exact
-          path={`${process.env.REACT_APP_BASE_URL}/complete-registration`}
+          path="/complete-registration"
           component={CompleteRegistration}
         />
-        <Route exact path={`${process.env.REACT_APP_BASE_URL}/password/forgot`} component={PasswordForgot} />
+        <Route exact path="/password/forgot" component={PasswordForgot} />
         <PrivateRoute
           exact
-          path={`${process.env.REACT_APP_BASE_URL}/password/update`}
+          path="/password/update"
           component={PasswordUpdate}
         />
-        <PrivateRoute exact path={`${process.env.REACT_APP_BASE_URL}/profile`} component={Profile} />
-        <PrivateRoute exact path={`${process.env.REACT_APP_BASE_URL}/post/create`} component={Post} />
-        <PrivateRoute exact path={`${process.env.REACT_APP_BASE_URL}/post/:idPost`} component={SinglePost} />
-        <Route exact path={`${process.env.REACT_APP_BASE_URL}/user/:username`} component={SingleUser} />
+        <PrivateRoute exact path="/profile" component={Profile} />
+        <PrivateRoute exact path="/post/create" component={Post} />
+        <PrivateRoute exact path="/post/:idPost" component={SinglePost} />
+        <Route exact path="/user/:username" component={SingleUser} />
       </Switch>
     </ApolloProvider>
   );
