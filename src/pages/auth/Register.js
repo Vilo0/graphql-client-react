@@ -4,7 +4,7 @@ import { toast } from "react-toastify";
 import AuthForm from "../../components/forms/AuthForm";
 
 const Register = () => {
-  const [email, setEmail] = useState("mchamorro@laescala.cl");
+  const [email, setEmail] = useState("demo@mail.cl");
   const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e) => {

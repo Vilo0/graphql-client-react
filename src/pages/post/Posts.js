@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from "react";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import { POST_UPDATE, POST_DELETE } from "../../graphql/mutations";
-import { POSTS_BY_USER, GET_ALL_POST } from "../../graphql/queries";
+import { POSTS_BY_USER, GET_ALL_POST, TOTAL_POST } from "../../graphql/queries";
 import PostCard from "../../components/PostCard";
 import PostDeleteModal from "../../components/modals/PostDelete";
 import { useLocation } from "react-router-dom";
@@ -44,6 +44,7 @@ const Posts = () => {
     const [postId, setPostId] = useState("");
 
     const { data } = useQuery(GET_ALL_POST, { variables: { limit, page, search: result } });
+    const { data: total } = useQuery(TOTAL_POST);
 
     const [postUpdate] = useMutation(POST_UPDATE, {
         // read query from cache / write query to cache
@@ -104,6 +105,7 @@ const Posts = () => {
     useEffect(() => {
         if(location.pathname && location.state) {
             setLoading(true);
+            setSearch(location.state.search);
             setResult(location.state.search);
             setLoading(false);
         }
@@ -129,7 +131,7 @@ const Posts = () => {
 
     return (
         <div className="container p-5">
-            { loading ? <h4>Loading....</h4> : <h1 className="text-center">All Posts</h1> }
+            { (loading && !total) ? <h4>Loading....</h4> : <h1 className="text-center">All Posts <h6>(Total en la base de datos: { JSON.stringify(total.totalPosts) })</h6></h1> }
             <div className="row">
                 <div className="col-12">
                     <form className="form-inline mt-5 float-right" onSubmit={handleSubmit}>

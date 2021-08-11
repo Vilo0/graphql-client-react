@@ -40,7 +40,7 @@ const App = () => {
       <Nav />
       <ToastContainer />
       <Switch>
-        <Route exact path="/" component={Home} />
+        <Route exact path="/" component={Posts} />
         <Route exact path="/users" component={Users} />
         <Route exact path="/posts" component={Posts} />
         <PublicRoute exact path="/register" component={Register} />

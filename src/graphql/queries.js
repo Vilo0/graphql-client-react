@@ -35,6 +35,12 @@ export const ALL_USERS = gql`
   ${USER_INFO}
 `;
 
+export const TOTAL_POST = gql`
+  query {
+    totalPosts
+  }
+`
+
 export const GET_ALL_POST = gql`
   query allPosts($limit: Int, $page: Int, $search: String){
     allPosts(limit: $limit, page: $page, search: $search) {

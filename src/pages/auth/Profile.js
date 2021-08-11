@@ -1,13 +1,27 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useContext } from "react";
 import { toast } from "react-toastify";
 import { useQuery, useMutation } from "@apollo/react-hooks";
 import omitDeep from "omit-deep";
+import { CopyToClipboard } from "react-copy-to-clipboard";
 import { PROFILE } from "../../graphql/queries";
 import { USER_UPDATE } from "../../graphql/mutations";
 import UserProfile from "../../components/forms/UserProfile";
 import FileUpload from "../../components/FileUpload";
+import { AuthContext } from "../../context/authContext";
 
 const Profile = () => {
+  const [text, setText] = useState("");
+  const [isCopied, setIsCopied] = useState(false);
+
+  const onCopyText = async (token) => {
+    await setText(token);
+    setIsCopied(true);
+    toast.success('token is copied!')
+  };
+
+  const { state } = useContext(AuthContext);
+  const { user } = state;
+
   const [values, setValues] = useState({
     username: "",
     name: "",
@@ -36,14 +50,14 @@ const Profile = () => {
   // mutation
   const [userUpdate] = useMutation(USER_UPDATE, {
     update: ({ data }) => {
-      console.log("USER UPDATE MUTATION IN PROFILE", data);
+      // console.log("USER UPDATE MUTATION IN PROFILE", data);
       toast.success("Profile updated");
     },
   });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(values);
+    // console.log(values);
     setLoading(true);
     userUpdate({ variables: { input: values } });
     setLoading(false);
@@ -56,6 +70,18 @@ const Profile = () => {
   return (
     <div className="container p-5">
       <div className="row">
+        <div className="col-md-12 row mb-5 px-3">
+          <div className="col-md-8">
+            <input value={user.token} className="form-control" disabled />
+          </div>
+          <div className="col-md-4">
+            <CopyToClipboard text={text} onCopy={() => onCopyText(user.token)}>
+              <div className="copy-area">
+                <button className="btn btn-primary btn-outline-primary">Copy Token to Clipboard</button>
+              </div>
+            </CopyToClipboard>
+          </div>
+        </div>
         <div className="col-md-12 mb-3">
           {loading ? (
             <h4 className="text-danger">Loading...</h4>

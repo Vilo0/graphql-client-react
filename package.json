@@ -1,5 +1,5 @@
 {
-  "homepage":"https://vilo0.github.io/graphql-client-react/",
+  "homepage": "https://vilo0.github.io/graphql-client-react/",
   "name": "client",
   "version": "0.1.0",
   "private": true,
@@ -16,6 +16,7 @@
     "omit-deep": "^0.3.0",
     "react": "^17.0.2",
     "react-bootstrap": "^1.6.1",
+    "react-copy-to-clipboard": "^5.0.3",
     "react-dom": "^17.0.2",
     "react-image-file-resizer": "0.2.3",
     "react-router-dom": "5.1.2",

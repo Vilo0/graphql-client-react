@@ -5,6 +5,7 @@ import UserCard from "../components/UserCard";
 import { PUBLIC_PROFILE } from "../graphql/queries";
 
 const SingleUser = () => {
+
   let params = useParams();
   const { loading, data } = useQuery(PUBLIC_PROFILE, {
     variables: { username: params.username },
