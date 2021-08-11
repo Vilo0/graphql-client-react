@@ -99,10 +99,6 @@ const Posts = () => {
     const location = useLocation();
 
     useEffect(() => {
-        console.log("cambiando resultado");
-    }, [data]);
-
-    useEffect(() => {
         if(location.pathname && location.state) {
             setLoading(true);
             setSearch(location.state.search);
@@ -131,7 +127,7 @@ const Posts = () => {
 
     return (
         <div className="container p-5">
-            { (loading && !total) ? <h4>Loading....</h4> : <h1 className="text-center">All Posts <h6>(Total en la base de datos: { JSON.stringify(total.totalPosts) })</h6></h1> }
+            { (loading && !total) ? <h4>Loading....</h4> : <><h1 className="text-center">All Posts <h6>(Total en la base de datos: { JSON.stringify(total?.totalPosts) })</h6></h1></> }
             <div className="row">
                 <div className="col-12">
                     <form className="form-inline mt-5 float-right" onSubmit={handleSubmit}>
@@ -169,7 +165,7 @@ const Posts = () => {
             </div>
             
             <div className="row">
-                { data &&  
+                { (data) &&  
                     data.allPosts.posts.map((post) => (
                         <div className="col-md-4 pt-5" key={post._id}>
                             <PostCard 

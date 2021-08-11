@@ -9,7 +9,6 @@ const Nav = () => {
   let history = useHistory();
 
   const { user } = state;
-  console.log("user", user);
 
   const logout = () => {
     auth().signOut();
@@ -21,7 +20,6 @@ const Nav = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    console.log("valor", search);
     history.push({
       pathname: '/posts',
       state: { search }
