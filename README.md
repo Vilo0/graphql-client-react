@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# Proyecto Escalab 2021 - React con Graphql
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Este proyecto permite conectar con el  <a href="https://github.com/Vilo0/graphql-server-node">`Backend`</a> realizado con `NodeJs` y `Graphql`. Administación de posts, autenticación y administración del perfil de usuario.
 
-## Available Scripts
+Link demo del proyecto: <a href="https://vilo0.github.io/graphql-client-react/">`https://vilo0.github.io/graphql-client-react/`</a>
 
-In the project directory, you can run:
+### Script disponibles
 
-### `yarn start`
+En el directorio del proyecto, puede ejecutar:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Parámetros de búsqueda para los post:
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+```
+- Cantidad de post por página
+- Paginación a través de botones de NEXT y PREVIUS
+- Búsqueda de texto a través del context
+```
 
-### `yarn test`
+##### `yarn start`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ejecuta la aplicación en modo de desarrollo.
 
-### `yarn build`
+Abrir <a href="http://localhost:3000">`http://localhost:3000`</a> para ver la web en el navegador.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+La página se recargará si realiza modificaciones.
+También verá cualquier error que haya en la consola.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+##### `yarn build`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Construye la aplicación para producción en la carpeta `build`.
+Compila React en el modo de producción y optimiza la compilación para obtener el mejor rendimiento.
 
-### `yarn eject`
+¡Tu aplicación está lista para el `deploy`!
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Ver la sección en [deployment](https://facebook.github.io/create-react-app/docs/deployment) para más información.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### IMPORTANTE
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```
+Para el login y/o registro, se requiere de un correo real, con el cual deben hacer las validaciones necesarias para su correcto inicio de sesión.
+Permisos en el caso del Login con Gmail. Permiso a través de un correo que se envía cuando es con el mail y posteriormente con el password.
+```
