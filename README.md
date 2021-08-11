@@ -4,6 +4,30 @@ Este proyecto permite conectar con el  <a href="https://github.com/Vilo0/graphql
 
 Link demo del proyecto: <a href="https://vilo0.github.io/graphql-client-react/">`https://vilo0.github.io/graphql-client-react/`</a>
 
+### Variables de entorno
+
+```
+REACT_APP_GRAPHQL_ENDPOINT: Url del backend -> Ejemplo http://localhost:8000/graphql
+REACT_APP_REST_ENDPOINT:  Ejemplo http://localhost:8000
+REACT_APP_CONFIRMATION_EMAIL_REDIRECT:  Ejemplo http://localhost:8000/complete-registration
+REACT_APP_PASSWORD_FORGOT_REDIRECT: Ejemplo http://localhost:8000/login
+PUBLIC_URL: (Opcional) 
+```
+
+#### Firebase
+
+Documentación de generación de información: <a href="https://firebase.google.com/docs/web/setup?hl=es-419">`https://firebase.google.com/docs/web/setup?hl=es-419`</a>
+
+
+```
+REACT_APP_FIREBASE_APIKEY: apiKey
+REACT_APP_FIREBASE_AUTHDOMAIN: authDomain
+REACT_APP_FIREBASE_PROJECTID: projectId
+REACT_APP_FIREBASE_STORAGEBUCKET: storageBucket
+REACT_APP_FIREBASE_MESSAGINGSENDERID: messagingSenderId
+REACT_APP_FIREBASE_APPID: appId
+```
+
 ### Script disponibles
 
 En el directorio del proyecto, puede ejecutar:
