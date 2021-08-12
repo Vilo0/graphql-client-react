@@ -2,6 +2,8 @@
 
 Este proyecto permite conectar con el  <a href="https://github.com/Vilo0/graphql-server-node">`Backend`</a> realizado con `NodeJs` y `Graphql`. Administación de posts, autenticación y administración del perfil de usuario.
 
+En la administración de posts (editar y actualizar), sólo los usuarios pertenecientes al post previamente creado, tendrán acceso a dichas acciones, de lo contrario, sólo podrán visualizar el detalle del post.
+
 ### Variables de entorno
 
 ```
