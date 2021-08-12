@@ -2,8 +2,6 @@
 
 Este proyecto permite conectar con el  <a href="https://github.com/Vilo0/graphql-server-node">`Backend`</a> realizado con `NodeJs` y `Graphql`. Administación de posts, autenticación y administración del perfil de usuario.
 
-Link demo del proyecto: <a href="https://vilo0.github.io/graphql-client-react/">`https://vilo0.github.io/graphql-client-react/`</a>
-
 ### Variables de entorno
 
 ```
