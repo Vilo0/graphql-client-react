@@ -127,7 +127,8 @@ const Posts = () => {
 
     return (
         <div className="container p-5">
-            { (loading && !total) ? <h4>Loading....</h4> : <><h1 className="text-center">All Posts <h6>(Total en la base de datos: { JSON.stringify(total?.totalPosts) })</h6></h1></> }
+            { loading ? <h4>Loading....</h4> : <><h1 className="text-center">All Posts </h1></> }
+            { total && <h6 className="text-center">(Total en la base de datos: { JSON.stringify(total?.totalPosts) })</h6> }
             <div className="row">
                 <div className="col-12">
                     <form className="form-inline mt-5 float-right" onSubmit={handleSubmit}>

@@ -42,7 +42,7 @@ const App = () => {
       <Switch>
         <Route exact path="/" component={Posts} />
         <Route exact path="/users" component={Users} />
-        <Route exact path="/posts" component={Posts} />
+        {/* <Route exact path="/posts" component={Posts} /> */}
         <PublicRoute exact path="/register" component={Register} />
         <PublicRoute exact path="/login" component={Login} />
         <Route
